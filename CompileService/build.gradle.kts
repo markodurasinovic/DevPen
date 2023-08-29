@@ -17,9 +17,6 @@ repositories {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
-    implementation("org.webjars:bootstrap:5.3.1")
-    implementation("org.webjars.npm:htmx.org:1.9.4")
 
     developmentOnly("org.springframework.boot:spring-boot-devtools")
 

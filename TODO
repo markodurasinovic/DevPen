@@ -1,0 +1,2 @@
+- figure out if 2 microservices which communicate should be sharing model (& if yes, how?)
+- how to avoid CORS issue?
