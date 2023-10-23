@@ -12,11 +12,13 @@ import java.net.URI;
 @Service
 public class CompileServiceClient {
 
-    @Value("${compiler.service.uri}")
-    private String URI;
+    private final String compilerServiceUri;
     private final RestTemplate restTemplate;
 
-    public CompileServiceClient(final RestTemplate restTemplate) {
+    public CompileServiceClient(final String compilerServiceUri,
+                                final RestTemplate restTemplate) {
+
+        this.compilerServiceUri = compilerServiceUri;
         this.restTemplate = restTemplate;
     }
 
@@ -25,7 +27,7 @@ public class CompileServiceClient {
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<RawHtml> request = new HttpEntity<>(htmlInput, headers);
 
-        return restTemplate.postForObject(URI + "/html", request, CompiledHtml.class);
+        return restTemplate.postForObject(compilerServiceUri + "/html", request, CompiledHtml.class);
     }
 
     public String stringTest() {
@@ -33,7 +35,7 @@ public class CompileServiceClient {
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<String> request = new HttpEntity<>("ayo", headers);
 
-        return restTemplate.postForObject(URI + "/stringTest", request, String.class);
+        return restTemplate.postForObject(compilerServiceUri + "/stringTest", request, String.class);
     }
 
 }
